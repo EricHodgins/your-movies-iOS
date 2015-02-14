@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UsersTableViewController.h
 //  Your Movie Reader
 //
 //  Created by Eric Hodgins on 2015-02-12.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface UsersTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *usersArray;
 
 @end
-

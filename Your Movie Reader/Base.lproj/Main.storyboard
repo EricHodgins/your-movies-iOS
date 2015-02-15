@@ -13,11 +13,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="tFc-LE-KaT">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="tFc-LE-KaT">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tFc-LE-KaT" id="V7m-vt-uPm">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="XQX-hi-PlC" kind="push" identifier="showUserMovies" id="u0f-mO-meA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -25,11 +28,44 @@
                             <outlet property="delegate" destination="TKI-GG-43x" id="6xJ-n2-HDu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JaQ-XX-WgM"/>
+                    <navigationItem key="navigationItem" id="JaQ-XX-WgM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="WIs-9x-ELB">
+                            <connections>
+                                <action selector="refreshButton:" destination="TKI-GG-43x" id="DQf-bg-mQz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNt-lP-rtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="733" y="357"/>
+        </scene>
+        <!--Your Movies Table View Controller-->
+        <scene sceneID="Igh-q0-D3W">
+            <objects>
+                <tableViewController id="XQX-hi-PlC" customClass="YourMoviesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cbn-O3-SwK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="mwP-tC-Zlm">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mwP-tC-Zlm" id="6ZZ-Hg-iXI">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XQX-hi-PlC" id="hSW-pC-UDs"/>
+                            <outlet property="delegate" destination="XQX-hi-PlC" id="Aok-X8-W6T"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tIV-rv-yNV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTk-c2-Ysp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1194" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qSS-Za-eUe">

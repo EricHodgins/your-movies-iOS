@@ -7,8 +7,11 @@
 //
 
 #import "UsersTableViewController.h"
+#import "YourMoviesTableViewController.h"
 
 @interface UsersTableViewController ()
+
+@property(strong, nonatomic) NSMutableDictionary *jsonDict;
 
 @end
 
@@ -17,25 +20,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Movie Users";
-    
-    NSURL *movieURL = [NSURL URLWithString:@"http://localhost:17080/.json"];
-    NSData *jsonData = [NSData dataWithContentsOfURL:movieURL];
-    NSLog(@"JSON data: %@", jsonData);
-    NSError *error = nil;
-    
-    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    NSLog(@"json as Dict: %@", dataDictionary);
+    self.title = @"http://192.168.1.101:8080/.json";
     
     self.usersArray = [NSMutableArray array];
     
-    for (NSDictionary *movieDict in dataDictionary) {
-        NSLog(@"%@", [movieDict objectForKey:@"username"]);
-        [self.usersArray addObject:[movieDict objectForKey:@"username"]];
-    }
-
     
 }
+
+
+- (IBAction)refreshButton:(id)sender {
+    
+    NSURL *movieURL = [NSURL URLWithString:@"http://192.168.1.101:8080/.json"];
+    NSData *jsonData = [NSData dataWithContentsOfURL:movieURL];
+    NSLog(@"JSON data: %@", jsonData);
+    
+    if (jsonData) {
+        
+        NSError *error = nil;
+
+        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        NSLog(@"json as Dict: %@", dataDictionary);
+        
+
+        
+        for (NSDictionary *movieDict in dataDictionary) {
+            NSLog(@"%@", [movieDict objectForKey:@"username"]);
+            [self.usersArray addObject:[movieDict objectForKey:@"username"]];
+        }
+        
+        self.jsonDict = [[NSMutableDictionary alloc] init];
+        for (NSDictionary *users in dataDictionary) {
+            [self.jsonDict setValue:[users objectForKey:@"movies"] forKey:[users objectForKey:@"username"]];
+        }
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"THE DICT: %@", self.jsonDict);
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Site Down" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -60,6 +88,21 @@
     
     return cell;
 }
+
+#pragma mark - Navigation
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    if ([segue.identifier isEqualToString:@"showUserMovies"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSString *username = [self.usersArray objectAtIndex:indexPath.row];
+        YourMoviesTableViewController *yourMovies = (YourMoviesTableViewController *)segue.destinationViewController;
+        yourMovies.userMovies = [self.jsonDict valueForKey:username];
+    }
+}
+
+
 
 
 /*
@@ -96,14 +139,6 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

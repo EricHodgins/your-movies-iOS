@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AAB76461A8EFCA600B73C23 /* YourMoviesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAB76451A8EFCA600B73C23 /* YourMoviesTableViewController.m */; };
 		7AC623F51A8DB26800ED7298 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC623F41A8DB26800ED7298 /* main.m */; };
 		7AC623F81A8DB26800ED7298 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC623F71A8DB26800ED7298 /* AppDelegate.m */; };
 		7AC623FE1A8DB26900ED7298 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AC623FC1A8DB26900ED7298 /* Main.storyboard */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7AAB76441A8EFCA600B73C23 /* YourMoviesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMoviesTableViewController.h; sourceTree = "<group>"; };
+		7AAB76451A8EFCA600B73C23 /* YourMoviesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourMoviesTableViewController.m; sourceTree = "<group>"; };
 		7AC623EF1A8DB26800ED7298 /* Your Movie Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Movie Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC623F31A8DB26800ED7298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC623F41A8DB26800ED7298 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				7AC623F71A8DB26800ED7298 /* AppDelegate.m */,
 				7AC624181A8DB41800ED7298 /* UsersTableViewController.h */,
 				7AC624191A8DB41800ED7298 /* UsersTableViewController.m */,
+				7AAB76441A8EFCA600B73C23 /* YourMoviesTableViewController.h */,
+				7AAB76451A8EFCA600B73C23 /* YourMoviesTableViewController.m */,
 				7AC623FC1A8DB26900ED7298 /* Main.storyboard */,
 				7AC623FF1A8DB26900ED7298 /* Images.xcassets */,
 				7AC624011A8DB26900ED7298 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				7AC623F81A8DB26800ED7298 /* AppDelegate.m in Sources */,
 				7AC6241A1A8DB41800ED7298 /* UsersTableViewController.m in Sources */,
 				7AC623F51A8DB26800ED7298 /* main.m in Sources */,
+				7AAB76461A8EFCA600B73C23 /* YourMoviesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,7 @@
 				7AC624141A8DB26900ED7298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7AC624151A8DB26900ED7298 /* Build configuration list for PBXNativeTarget "Your Movie ReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				7AC624171A8DB26900ED7298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

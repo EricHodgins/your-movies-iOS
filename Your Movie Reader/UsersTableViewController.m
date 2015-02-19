@@ -20,28 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"http://192.168.1.101:8080/.json";
-    
+    self.title = @"Your-Movies";
+
     self.usersArray = [NSMutableArray array];
-    
-    
+    [self refreshData];
 }
 
 
-- (IBAction)refreshButton:(id)sender {
-    
-    NSURL *movieURL = [NSURL URLWithString:@"http://192.168.1.101:8080/.json"];
+- (void)refreshData {
+    NSURL *movieURL = [NSURL URLWithString:@"http://your-movies.appspot.com/.json"];
     NSData *jsonData = [NSData dataWithContentsOfURL:movieURL];
     NSLog(@"JSON data: %@", jsonData);
     
     if (jsonData) {
         
         NSError *error = nil;
-
+        
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
         NSLog(@"json as Dict: %@", dataDictionary);
         
-
+        
         
         for (NSDictionary *movieDict in dataDictionary) {
             NSLog(@"%@", [movieDict objectForKey:@"username"]);
@@ -60,6 +58,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Site Down" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
+}
+
+- (IBAction)refreshButton:(id)sender {
+    
+    [self refreshData];
 
 }
 

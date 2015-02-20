@@ -22,12 +22,12 @@
     
     self.title = @"Your-Movies";
 
-    self.usersArray = [NSMutableArray array];
     [self refreshData];
 }
 
 
 - (void)refreshData {
+    self.usersArray = [NSMutableArray array];
     NSURL *movieURL = [NSURL URLWithString:@"http://your-movies.appspot.com/.json"];
     NSData *jsonData = [NSData dataWithContentsOfURL:movieURL];
     NSLog(@"JSON data: %@", jsonData);
